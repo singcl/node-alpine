@@ -1,4 +1,4 @@
-FROM singcl/node18-alpine:pm2
+FROM singcl/node16-alpine:pm2
 
 # 你的业务逻辑
 # WORKDIR /app

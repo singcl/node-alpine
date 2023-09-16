@@ -20,11 +20,37 @@ CMD ["node"]
 ### 2. 构建镜像
 
 ```bash
-docker build -t node:20-alpine3.18 .
+docker build -t singcl/node:20-alpine3.18 .
 ```
 
 ### 3. 运行镜像
 
 ```bash
-docker run -it --rm node:20-alpine3.18
+docker run -it --rm singcl/node:20-alpine3.18
+```
+
+## 制作 nodejs + pm2 基础镜像
+
+可用的官方 nodejs 基础镜像： [nodejs 镜像](https://hub.docker.com/_/node)
+可用的官方 alpine 基础镜像： [alpine 镜像](https://hub.docker.com/_/alpine)
+
+### 创建 Dockerfile
+
+```dockerfile
+FROM node:20-alpine3.18
+RUN npm install pm2 -g
+
+CMD ["node"]
+```
+
+### 构建镜像
+
+```bash
+docker build -t singcl/node:20-alpine3.18-pm2 .
+```
+
+### 运行镜像
+
+```bash
+docker run -it --rm singcl/node:20-alpine3.18-pm2
 ```
